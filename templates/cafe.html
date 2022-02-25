@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CafeFinder</title>
+      <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="static/css/styles.css">
+
+  <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+  <section >
+
+    <div class="container-fluid">
+
+      <!-- Nav Bar -->
+
+      <nav class="heading navbar navbar-expand-lg navbar-dark" style="background-color: #AE431E;">
+
+        <a class="navbar-brand" href="#"><i class="fas fa-coffee"></i>  CafeFinder</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+          <ul class="navbar-nav navbar-dark ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#footer"><i class="fas fa-list-alt"></i> All Cafes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#pricing"><i class="fas fa-map-marker-alt"></i> Locations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#cta"><i class="fas fa-sign-in-alt"></i> Join</a>
+            </li>
+          </ul>
+
+        </div>
+      </nav>
+
+
+      <!-- Title -->
+
+      <div class="cafe-img container-fluid" style="background-image: url('{{cafe.img_url}}');">
+             <h1> {{cafe.name}}</h1>
+      </div>
+
+      <div class="cafe-features container-fluid">
+            <p> <b>Location</b>: {{cafe.location}} <br>
+            <i class="fas fa-map-marker-alt"></i> <a href="{{cafe.map_url}}">  map</a> <br>
+            <b>Cafe price</b>: {{cafe.coffee_price}} <br>
+            <b>Seats</b>: {{cafe.seats}} <br>
+            <b>Services</b>: <i class="fa fa-fw fa-coffee"></i>
+            {% if cafe.has_wifi %}
+              <i class="fa fa-fw fa-wifi"></i>
+            {% endif %}
+            {% if cafe.has_sockets %}
+              <i class="fa fa-fw fa-plug"></i>
+            {% endif %}
+            {% if cafe.can_take_calls %}
+              <i class="fas fa-phone-square"></i>
+            {% endif %}
+            {% if cafe.has_toilet %}
+              <i class="far fa-toilet"></i>
+            {% endif %}
+          </p>
+      </div>
+      <div class="map container-fluid">
+        <!--Google map-->
+        <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
+          <iframe src="https://maps.google.com/maps?q={{cafe.name_location_map[0]}}{{cafe.name_location_map[1]}}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+
+        <!--Google Maps-->
+      </div>
+
+    </div>
+
+  </section>
+  <section id="list-filters">
+      <div class="">
+
+      </div>
+
+  </section>
+  <footer  id="footer">
+    <div class="container-fluid">
+      <i class="social-icon fab fa-facebook-f"></i>
+      <i class="social-icon fab fa-twitter"></i>
+      <i class="social-icon fab fa-instagram"></i>
+      <i class="social-icon fas fa-envelope"></i>
+      <p>© Copyright 2022 CafeFinder</p>
+    </div>
+  </footer>
+</body>
+</html>

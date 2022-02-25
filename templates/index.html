@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CafeFinder</title>
+      <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="static/css/styles.css">
+
+  <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+  <section id="title">
+
+    <div class="container-fluid">
+
+      <!-- Nav Bar -->
+
+      <nav class="heading navbar navbar-expand-lg navbar-dark" style="background-color: #AE431E;">
+
+        <a class="navbar-brand" href="#"><i class="fas fa-coffee"></i>  CafeFinder</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+          <ul class="navbar-nav navbar-dark ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#footer"><i class="fas fa-list-alt"></i> All Cafes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#pricing"><i class="fas fa-map-marker-alt"></i> Locations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#cta"><i class="fas fa-sign-in-alt"></i> Join</a>
+            </li>
+          </ul>
+
+        </div>
+      </nav>
+
+
+      <!-- Title -->
+
+      <div class="big-heading fluid-container">
+             <h1> Hello, welcome to CafeFinder</h1>
+             <h3> Find a quiet place to work. <br>
+               <a class="add-cafe-btn btn btn-warning" href="{{url_for('add_cafe')}}" role="button">Add Cafe</a>
+             </h3>
+
+      </div>
+
+    </div>
+
+  </section>
+  <section id="list-filters">
+    <div class="row">
+      <div class="filters col-lg-6">
+        <div style="text-align: center;">
+          <!-- <h1> “ Hello. ” </h1>
+          <i class="fas fa-wifi"></i>
+          <i class="fas fa-loveseat"></i>
+          <a href="https://icons8.com/icon/iS85Fm2nWjCK/socket">Socket icon by Icons8</a> -->
+          <form method="post">
+              <h3 class="filters-titles">Location</h3>
+              <div class="form-group row">
+                <label for="inputCountry" class="col-sm-2 col-lg-4 col-form-label">Country :</label>
+                <div class="col-sm-10 col-lg-4">
+                  <!-- <input type="text" class="form-control " id="inputCountry" placeholder="Country"> -->
+                  <select name="country" id="inputCountry" class="form-control">
+                     <option selected>All</option>
+                    {% for country in countries %}
+                     <option>{{country}}</option>
+                    {% endfor %}
+                   </select>
+                </div>
+              </div>
+              <h3 class="filters-titles">Productivity</h3>
+               <div class="row">
+                 <div class="filters-btn col-lg-3 col-md-3">
+                   <div class="btn-group-toggle" data-toggle="buttons">
+                   <label class="btn btn-outline-dark ">
+                   <input name="has_wifi" type="checkbox"  autocomplete="off">
+                     <i class="fa fa-fw fa-wifi"></i>
+                     <br>
+                     <span title="Stable Wi-Fi">
+                       Wi-Fi
+                     </span>
+                   </label>
+                   </div>
+                 </div>
+                 <div class="filters-btn col-lg-3 col-md-3">
+                   <div class="btn-group-toggle" data-toggle="buttons">
+                   <label class="btn btn-outline-dark ">
+                   <input name="has_sockets" type="checkbox"  autocomplete="off">
+                    <i class="fa fa-fw fa-plug"></i>
+                     <br>
+                     <span title="Power sockets">
+                      Socket
+                     </span>
+                    </label>
+                    </div>
+                 </div>
+                 <div class="filters-btn col-lg-3 col-md-3">
+                   <div class="btn-group-toggle" data-toggle="buttons">
+                     <label class="btn btn-outline-dark ">
+                     <input  type="checkbox"  autocomplete="off">
+                       <i class="fas fa-clock"></i>
+                       <br>
+                       <span title="Long stays">
+                       Long stay
+                       </span>
+                     </label>
+                     </div>
+                 </div>
+                 <div class="filters-btn col-lg-3 col-md-3">
+                   <div class="btn-group-toggle" data-toggle="buttons">
+                     <label class="btn btn-outline-dark ">
+                     <input  type="checkbox"  autocomplete="off">
+                       <i class="fa fa-fw fa-pen-square"></i>
+                       <br>
+                       <span title="Work-friendly tables">
+                       Tables
+                       </span>
+                     </label>
+                     </div>
+                 </div>
+                 <div class="filters-btn col-lg-3 col-md-3">
+                   <div class="btn-group-toggle" data-toggle="buttons">
+                     <label class="btn btn-outline-dark ">
+                     <input  type="checkbox"  autocomplete="off">
+                       <i class="fa fa-fw fa-volume-down"></i>
+                       <br>
+                       <span title="Quiet">
+                       Quiet
+                       </span>
+                     </label>
+                     </div>
+                 </div>
+                 <div class="filters-btn col-lg-3 col-md-3">
+                   <div class="btn-group-toggle" data-toggle="buttons">
+                     <label class="btn btn-outline-dark ">
+                     <input name="can_take_calls" type="checkbox"  autocomplete="off">
+                       <i class="fas fa-phone-square"></i>
+                       <br>
+                       <span title="Video/audio calls">
+                       Calls
+                       </span>
+                     </label>
+                     </div>
+                 </div>
+               </div>
+              <h3 class="filters-titles">Service</h3>
+              <div class="row">
+                <div class="filters-btn col-lg-3 col-md-3">
+                  <div class="btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-outline-dark ">
+                  <input  type="checkbox"  autocomplete="off">
+                    <i class="fa fa-fw fa-coffee"></i>
+                    <br>
+                    <span title="Coffee">
+                      Coffee
+                    </span>
+                  </label>
+                  </div>
+                </div>
+                <div class="filters-btn col-lg-3 col-md-3">
+                  <div class="btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-outline-dark ">
+                  <input  type="checkbox"  autocomplete="off">
+                      <i class="fa fa-fw fa-utensils"></i>
+                      <br>
+                      <span title="Food">
+                      Food
+                      </span>
+                   </label>
+                   </div>
+                </div>
+                <div class="filters-btn col-lg-3 col-md-3">
+                  <div class="btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-outline-dark ">
+                    <input  type="checkbox"  autocomplete="off">
+                      <i class="fa fa-fw fa-leaf"></i>
+                      <br>
+                      <span title="Veggie">
+                      Veggie
+                      </span>
+                    </label>
+                    </div>
+                </div>
+                <div class="filters-btn col-lg-3 col-md-3">
+                  <div class="btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-outline-dark ">
+                    <input  type="checkbox"  autocomplete="off">
+                      <i class="fa fa-fw fa-glass-martini"></i>
+                      <br>
+                      <span title="Alcohol">
+                      Alcohol
+                      </span>
+                    </label>
+                    </div>
+                </div>
+                <div class="filters-btn col-lg-3 col-md-3">
+                  <div class="btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-outline-dark ">
+                    <input  type="checkbox"  autocomplete="off">
+                      <i class="fa fa-fw fa-credit-card"></i>
+                      <br>
+                      <span title="Credit cards">
+                      Cards
+                      </span>
+                    </label>
+                    </div>
+                </div>
+              </div>
+              <h3 class="filters-titles">Space</h3>
+              <div class="row">
+                <div class="filters-btn col-lg-3 col-md-3">
+                  <div class="btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-outline-dark ">
+                  <input  type="checkbox"  autocomplete="off">
+                    <i class="fa fa-fw fa-sun"></i>
+                    <br>
+                    <span title="Natural light">
+                    Light
+                    </span>
+                  </label>
+                  </div>
+                </div>
+                <div class="filters-btn col-lg-3 col-md-3">
+                  <div class="btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-outline-dark ">
+                  <input  type="checkbox"  autocomplete="off">
+                    <i class="fa fa-fw fa-tree"></i>
+                    <br>
+                    <span title="Outdoor area">
+                    Outdoor
+                    </span>
+                   </label>
+                   </div>
+                </div>
+                <div class="filters-btn col-lg-3 col-md-3">
+                  <div class="btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-outline-dark ">
+                    <input  type="checkbox"  autocomplete="off">
+                      <i class="fa fa-fw fa-arrows-alt"></i>
+                      <br>
+                      <span title="Spacious">
+                      Spacious
+                      </span>
+                    </label>
+                    </div>
+                </div>
+                <div class="filters-btn col-lg-3 col-md-3">
+                  <div class="btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-outline-dark ">
+                    <input  type="checkbox"  autocomplete="off">
+                      <i class="fas fa-toilet"></i>
+                      <br>
+                      <span title="Restroom">
+                        Restroom
+                      </span>
+                    </label>
+                    </div>
+                </div>
+                <div class="filters-btn col-lg-3 col-md-3">
+                  <div class="btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-outline-dark ">
+                    <input  type="checkbox"  autocomplete="off">
+                      <i class="fa fa-fw fa-wheelchair"></i>
+                      <br>
+                      <span title="Accessible">
+                      Accessible
+                      </span>
+                    </label>
+                    </div>
+                </div>
+                <div class="filters-btn col-lg-3 col-md-3">
+                  <div class="btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-outline-dark ">
+                    <input  type="checkbox"  autocomplete="off">
+                      <i class="fa fa-fw fa-thermometer-half"></i>
+                      <br>
+                      <span title="Air conditioned">
+                      A/C
+                      </span>
+                    </label>
+                    </div>
+                </div>
+                <div class="filters-btn col-lg-3 col-md-3">
+                  <div class="btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-outline-dark ">
+                    <input  type="checkbox"  autocomplete="off">
+                      <i class="fa fa-dog"></i>
+                      <br>
+                      <span title="Pet friendly">
+                      Pets
+                      </span>
+                    </label>
+                    </div>
+                </div>
+                <div class="filters-btn col-lg-3 col-md-3">
+                  <div class="btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-outline-dark ">
+                    <input  type="checkbox"  autocomplete="off">
+                      <i class="fa fa-fw fa-car"></i>
+                      <br>
+                      <span title="Parking">
+                      Parking
+                      </span>
+                    </label>
+                    </div>
+                </div>
+              </div>
+              <input class=" filters-btn-submit btn btn-info btn-lg" type="submit" value="Search">
+          </form>
+        </div>
+      </div>
+      <div class="list col-lg-6">
+        {% for cafee in cafees %}
+          <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="  col-md-4">
+                    <a href="{{url_for('cafe', id=cafee.id)}}"> <img src="{{cafee.img_url}}" class="list-img img-fluid rounded-start" alt="..."></a>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{cafee.name}}</h5>
+                      <p class="card-text"> <b>location</b>: {{cafee.location}} - {{cafee.country}}<br>
+                        <i class="fas fa-map-marker-alt"></i> <a href="{{cafee.map_url}}"> map</a> <br>
+                        <b>price</b>: {{cafee.coffee_price}} <br>
+                        <b>seats</b>: {{cafee.seats}} <br>
+                        <b>service</b>: <i class="fa fa-fw fa-coffee" style="color: #AE431E"></i>
+                        {% if cafee.has_wifi %}
+                          <i class="fa fa-fw fa-wifi" style="color: #AE431E"></i>
+                        {% endif %}
+                        {% if cafee.has_sockets %}
+                          <i class="fa fa-fw fa-plug" style="color: #AE431E"></i>
+                        {% endif %}
+                        {% if cafee.can_take_calls %}
+                          <i class="fas fa-phone-square " style="color: #AE431E"></i>
+                        {% endif %}
+                        {% if cafee.has_toilet %}
+                          <i class="far fa-toilet" style="color: #AE431E"></i>
+                        {% endif %}
+                      </p>
+<!--                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+        {% endfor %}
+        </div>
+    </div>
+  </section>
+  <footer  id="footer">
+    <div class="container-fluid">
+      <i class="social-icon fab fa-facebook-f"></i>
+      <i class="social-icon fab fa-twitter"></i>
+      <i class="social-icon fab fa-instagram"></i>
+      <i class="social-icon fas fa-envelope"></i>
+      <p>© Copyright 2022 CafeFinder</p>
+    </div>
+  </footer>
+</body>
+</html>

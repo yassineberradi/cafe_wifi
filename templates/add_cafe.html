@@ -1,0 +1,16 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% include "header.html" %}
+<div class="container">
+  <div class="row">
+    <div class=" fluid-container col-lg-6 col-sm-12 col-md-8" style="margin-top: 100px;">
+      {% if not api_response  %}
+      <h1>Add a new cafe into the database</h1>
+
+              {{ wtf.quick_form(form) }}
+      {% else %}
+       <h1>{{api_response['response']['success']}}</h1>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% include "footer.html" %}
