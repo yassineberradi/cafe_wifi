@@ -1,10 +1,10 @@
 import requests as requests
 
-ALL_DATA_ENDPOINT = "http://127.0.0.1:5000/all"
-SEARCH_ENDPOINT = "http://127.0.0.1:5000/search"
-FILTER_ENDPOINT = "http://127.0.0.1:5000/filter"
-CAFFE_BY_ID_ENDPOINT = "http://127.0.0.1:5000/cafe"
-ADD_CAFE_ENDPOINT = "http://127.0.0.1:5000/add"
+ALL_DATA_ENDPOINT = "https://cafeefinder.herokuapp.com/all"
+SEARCH_ENDPOINT = "https://cafeefinder.herokuapp.com/search"
+FILTER_ENDPOINT = "https://cafeefinder.herokuapp.com/filter"
+CAFFE_BY_ID_ENDPOINT = "https://cafeefinder.herokuapp.com/cafe"
+ADD_CAFE_ENDPOINT = "https://cafeefinder.herokuapp.com/add"
 
 
 class ApiManager:
