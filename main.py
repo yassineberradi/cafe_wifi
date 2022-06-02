@@ -112,4 +112,4 @@ def unshorten_url(url):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=1200)
+    app.run(debug=True)
